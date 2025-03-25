@@ -37,8 +37,10 @@ RUN wget https://wordpress.org/latest.zip && \
 COPY ./requirements/wordpress/conf/wp-config-create.sh .
 RUN sh wp-config-create.sh && rm wp-config-create.sh && \
     chmod -R 0777 wp-content/
+    # chmod +x requirements/wordpress/tools/make_dir.sh \
+    # requirements/wordpress/tools/make_dir.sh
 CMD ["/usr/sbin/php-fpm82", "-F"]
-
+#CMD ["/bin/sh"]
 
 # docker exec -it wordpress /usr/sbin/php-fpm82 -v
 # docker exec -it wordpress /usr/sbin/php-fpm82 -m
